@@ -1,0 +1,28 @@
+{% extends 'student/student_base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th>StudentCourse Id</th>
+                    <th>Student Name</th>
+                    <th>Course Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {% for sc in studentcourse %}
+                    <tr>
+                        <td>{{ sc.id }}</td>
+                        <td>{{ sc.student_id.full_name }}</td>
+                        <td>{{ sc.student_id.course_title }}</td>
+                        <td>{{ sc.type }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+

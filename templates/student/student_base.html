@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CMS | Student Panel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3 my-3">
+            <img src="{{ student.0.dp.url }}" class="w-100" height="auto">
+            <div class="list-group mt-3">
+                <a href="{% url 'student_dashboard' %}" class="list-group-item list-group-item-action">Dashboard</a>
+                <a href="{% url 'student_payment' %}" class="list-group-item list-group-item-action">Manage Payment</a>
+                <a href="{% url 'student_course' %}" class="list-group-item list-group-item-action">Manage Course</a>
+                <a href="{% url 'student_setting' %}" class="list-group-item list-group-item-action">Profile Setting</a>
+            </div>
+            {% block side %}{% endblock %}
+        </div>
+        <div class="col-lg-9 p-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+                <a href="" class="navbar-brand">EduTech Management System</a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="navbar-item mx-4">
+                        <a href="{% url 'student_logout' %}" class="btn btn-danger btn-sm">LogOut</a>
+                    </li>
+                </ul>
+            </nav>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% block footer %}{% endblock %}
+<div class="container-fluid text-center">
+    <p class="small">Design by CWS</p>
+</div>
+<script>
+    $(document).ready(function () {
+        $("input, select, textarea").addClass("form-control")
+    });
+</script>
+</body>
+</html>
